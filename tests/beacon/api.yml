@@ -1,0 +1,16 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+
+  vars_files:
+    - ["vault/{{ host }}.key.yml"]
+
+  tasks:
+    - name: GET HELLO
+      shell: beacon get hello
+      register: response
+      environment:
+          BEACON_KEY: "{{ api_key }}"
+          BEACON_HOST: "https://{{ host }}.decipherinc.com"
+
+    - debug: msg="{{response.stdout}}"
