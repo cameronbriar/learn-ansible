@@ -1,7 +1,6 @@
 ---
 # how to do this safely e.g. w/out history?
-- hosts: localhost
-  connection: local
+- hosts: ["{{ host }}", "localhost"]
   tasks:
     - name: Creating users "{{ user }}" without admin access
       user: name={{ user }} password={{ pass | password_hash('sha512') }}
