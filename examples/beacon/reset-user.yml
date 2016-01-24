@@ -1,0 +1,6 @@
+---
+- hosts: "{{ host }}"
+  tasks:
+      - name: Reset User PW
+        shell: "pam_tally2 --reset {{ user }}"
+

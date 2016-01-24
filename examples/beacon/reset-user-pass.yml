@@ -1,0 +1,10 @@
+---
+# how to do this safely e.g. w/out history?
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Creating users "{{ user }}" without admin access
+      user: name={{ user }} password={{ pass | password_hash('sha512') }}
+    
+    - name: Expiring password for user "{{ user }}"
+      shell: chage -d 0 "{{ user }}"
